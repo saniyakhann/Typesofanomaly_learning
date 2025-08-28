@@ -1,5 +1,5 @@
 # Typesofanomaly_learning
-Unsupervised and Supervised learning to plot anomalies of data
+Comparative analysis of supervised and unsupervised machine learning approaches for anomaly detection, evaluating performance across different algorithms and datasets. 
 
 Supervised learning: 
 Training a model based on a labeled dataset; training example is labelled with an output label 
