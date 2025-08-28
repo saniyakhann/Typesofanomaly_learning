@@ -1,4 +1,4 @@
-# Typesofanomaly_learning
+# Types_of_anomaly_learning
 Comparative analysis of supervised and unsupervised machine learning approaches for anomaly detection, evaluating performance across different algorithms and datasets. 
 
 Supervised learning: 
