@@ -3,28 +3,28 @@ import plotly.express as px
 from adtk.data import validate_series
 from adtk.detector import QuantileAD
 
-# Load the data
+#load the data
 data = pd.read_csv("data.csv")
 print(data.head())
 
-# Filter data and set index
+#filter data and set index
 data = data.loc[data["logical_site_id"] == 6420]
 data["period_start_time"] = pd.to_datetime(data["period_start_time"])
 data = data.set_index("period_start_time")
 data = data["rrc_accessibility"]
 print(data.head())
 
-# Validate series
+#validate series
 data = validate_series(data)
 
-# Quantile-based anomaly detection
+#quantile-based anomaly detection
 quantile_detector = QuantileAD(low=0.01, high=0.99)
 anomalies = quantile_detector.fit_detect(data)
 
-# Plot the results
+#plot the results
 fig = px.line(data.reset_index(), x='period_start_time', y='rrc_accessibility', title='RRC Accessibility Over Time')
 
-# Add anomalies
+#add anomalies
 anomaly_points = data[anomalies == 1].reset_index()
 fig.add_scatter(x=anomaly_points['period_start_time'], y=anomaly_points['rrc_accessibility'],
                 mode='markers', marker=dict(color='red', size=8), name='Anomalies')
